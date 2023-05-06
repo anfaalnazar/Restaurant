@@ -1,0 +1,88 @@
+﻿@model Restaurant.Models.ProductVM
+
+@{
+    ViewData["Title"] = "editproduct";
+}
+
+<h1>editproduct</h1>
+
+<h4>ProductVM</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="editproduct">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="productid" class="control-label"></label>
+                <input asp-for="productid" class="form-control" />
+                <span asp-validation-for="productid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="productname" class="control-label"></label>
+                <input asp-for="productname" class="form-control" />
+                <span asp-validation-for="productname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="categoryid" class="control-label"></label>
+                <input asp-for="categoryid" class="form-control" />
+                <span asp-validation-for="categoryid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="minqnty" class="control-label"></label>
+                <input asp-for="minqnty" class="form-control" />
+                <span asp-validation-for="minqnty" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="maxqnty" class="control-label"></label>
+                <input asp-for="maxqnty" class="form-control" />
+                <span asp-validation-for="maxqnty" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UOMid" class="control-label"></label>
+                <input asp-for="UOMid" class="form-control" />
+                <span asp-validation-for="UOMid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="israw" class="control-label"></label>
+                <input asp-for="israw" class="form-control" />
+                <span asp-validation-for="israw" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="reorderlevel" class="control-label"></label>
+                <input asp-for="reorderlevel" class="form-control" />
+                <span asp-validation-for="reorderlevel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="makequantity" class="control-label"></label>
+                <input asp-for="makequantity" class="form-control" />
+                <span asp-validation-for="makequantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="makeuom" class="control-label"></label>
+                <input asp-for="makeuom" class="form-control" />
+                <span asp-validation-for="makeuom" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="categoryname" class="control-label"></label>
+                <input asp-for="categoryname" class="form-control" />
+                <span asp-validation-for="categoryname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UOMname" class="control-label"></label>
+                <input asp-for="UOMname" class="form-control" />
+                <span asp-validation-for="UOMname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

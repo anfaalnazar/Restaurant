@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Restaurant.Models.dishesVM>
+
+@{
+    ViewData["Title"] = "getalldishes";
+}
+
+<h1>getalldishes</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.dishid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dishname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dishcolor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dishtype)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.categoryid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.categoryname)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.dishid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dishname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dishcolor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dishtype)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.categoryid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.categoryname)
+            </td>
+            <td>
+                <a asp-controller="Dishes" asp-action="editdishes" asp-route-dishid="@item.dishid">Edit</a>
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

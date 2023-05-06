@@ -1,0 +1,94 @@
+﻿@model Restaurant.Models.ProductVM
+
+@{
+    ViewData["Title"] = "createproduct";
+}
+
+<h1>Create New Product</h1>
+<hr />
+<div class="row">
+    <div class="col-md-12" style="margin-bottom:6px">
+        <form asp-action="createproduct">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <fieldset style="border: 2px solid green; display:flex;flex-direction:row;justify-content:space-around" >
+                <legend style="width:150px">General Info</legend>
+               
+                    <label asp-for="productname" class="control-label">Enter Product Name</label>
+                    <input asp-for="productname" class="form-control" />
+                    <span asp-validation-for="productname" class="text-danger"></span>
+               
+                
+                    <label asp-for="categoryid" class="control-label">Category</label>
+                    <select asp-for="categoryid" class="form-control" asp-items="ViewBag.CategoryList">
+                        <option value="0">Select Category</option>
+                    </select>
+                    <span asp-validation-for="categoryid" class="text-danger"></span>
+           
+               
+                    <label asp-for="UOMid" class="control-label">UOM</label>
+                    <select asp-for="UOMid" class="form-control" asp-items="ViewBag.UOMList">
+                        <option value="0">Select UOM</option>
+                    </select>
+                    <span asp-validation-for="UOMid" class="text-danger"></span>
+                
+            </fieldset>
+            <div class="form-group">
+                <label asp-for="minqnty" class="control-label">Enter Minimum Quantity</label>
+                <input asp-for="minqnty" class="form-control" />
+                <span asp-validation-for="minqnty" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="maxqnty" class="control-label">Enter Maximum Quantity</label>
+                <input asp-for="maxqnty" class="form-control" />
+                <span asp-validation-for="maxqnty" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="reorderlevel" class="control-label"></label>
+                <input asp-for="reorderlevel" class="form-control" />
+                <span asp-validation-for="reorderlevel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="israw" class="control-label">
+                    Select Is Raw
+                    <br />
+                    <input type="radio" asp-for="israw" value="Y" />Yes
+                    <input type="radio" asp-for="israw" value="N" />No
+                </label>
+                <span asp-validation-for="israw" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="makequantity" class="control-label">Enter the make quantity and its unit</label>
+                <input asp-for="makequantity" class="form-control" />
+                <span asp-validation-for="makequantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+
+                <select asp-for="makeuom" class="form-control" asp-items="ViewBag.UOMList">
+                    <option value="0">Select make UOM quantity</option>
+                </select>
+                <span asp-validation-for="makeuom" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+            <label asp-for="categoryname" class="control-label"></label>
+            <input asp-for="categoryname" class="form-control" />
+            <span asp-validation-for="categoryname" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="UOMname" class="control-label"></label>
+            <input asp-for="UOMname" class="form-control" />
+            <span asp-validation-for="UOMname" class="text-danger"></span>
+        </div>*@
+            <div class="form-group">
+                <input type="submit" value="Create Product" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

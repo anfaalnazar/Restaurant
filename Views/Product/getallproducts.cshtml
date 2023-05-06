@@ -1,0 +1,105 @@
+﻿@model IEnumerable<Restaurant.Models.ProductVM>
+
+@{
+    ViewData["Title"] = "getallproducts";
+    var raw = "";
+}
+
+<h1>getallproducts</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.productid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.productname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.categoryname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UOMname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.minqnty)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.maxqnty)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.israw)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.reorderlevel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.makequantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.makeuom)
+            </th>
+
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.productid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.productname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.categoryname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UOMname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.minqnty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.maxqnty)
+            </td>
+
+            <td>
+
+                @if (item.israw == 'Y')
+                {
+                    raw = "Raw material";
+                }
+                else
+                {
+                    raw = "Finished";
+                }
+                @raw
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.reorderlevel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.makequantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.makeuom)
+            </td>
+
+            <td>
+                <a asp-controller="Product" asp-action="editproduct" asp-route-productid="@item.productid">Edit</a>
+                <a asp-controller="Ingredient" asp-action="Createingredient" asp-route-productid="@item.productid" asp-route-productname="@item.productname">Ingredients</a>
+                @*asp-route-rawmaterial="@item.rawmaterialid"*@
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
